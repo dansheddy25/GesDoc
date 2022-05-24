@@ -1,0 +1,25 @@
+{% extends "home.html" %}
+
+{% block content1 %}
+<title>Test</title>
+{% endblock content1 %}
+
+{% block content %}
+<h1 align = "center"> Test du formulaire </h1>
+{% endblock content %}
+
+{% block formulaire %}
+
+{% if submitted %}
+<p> Congratulation your registration is valid </p>
+
+{% else %}
+<form align = "center" class=""  method="POST" action="" enctype="multipart/form-data" novalidate>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="reset" name="" value="Effacer">
+  <button type="submit" name="button">suivant</button>
+</form>
+
+{% endif %}
+{% endblock formulaire %}

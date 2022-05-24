@@ -1,0 +1,49 @@
+{% extends "general/layout.html" %}
+
+
+
+{% block content %}
+<div class="wrapper row3">
+  <main class="hoc container clear">
+    <!-- main body -->
+    <!-- ################################################################################################ -->
+    <div class="sectiontitle">
+      <h6 class="heading">Test</h6>
+      <p>Fill information</p>
+    </div>
+    <div class="group">
+      <div class="one_half first">
+          <table>
+            <thead>
+              <tr>
+                <th colspan="4" align = "center">Liste des candidats admis pour l'entretien</th>
+              </tr>
+              <tr>
+                <th>CIN</th>
+                <th>Nom</th>
+                <th>Prénom(s)</th>
+                <th>Adresse Mail</th>
+              </tr>
+            </thead>
+            {% for element in individus %}
+            <tbody>
+              <tr>
+                <td>{{ element.cin }}</td>
+                <td>{{ element.nom }}</td>
+                <td>{{ element.prenoms }}</td>
+                <td>{{ element.mail }}</td>
+              </tr>
+            </tbody>
+            {% endfor %}
+          </table>
+      </div>
+    </div>
+    <!-- ################################################################################################ -->
+
+
+    <!-- / main body -->
+    <div class="clear"></div>
+  </main>
+</div>
+
+{% endblock %}

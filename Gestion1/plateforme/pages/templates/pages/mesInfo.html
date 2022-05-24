@@ -1,0 +1,54 @@
+
+{% extends "pages/base.html" %}
+
+{% block pageTitle %}
+
+{% endblock pageTitle %}
+<div id="logo" class="fl_left">
+  <h1><a href="{% url 'pages:home' %}">Return to home</a></h1>
+</div>
+{% block content %}
+    <div class="box box-warning" >
+      <div class="box-header box-with-boder ">
+          {% if user.individu.my_status == "doctorant" %}
+          <h3 class="heading" align = "center">Mes Informations</h3>
+          {% elif user.individu.my_status == "professeur" %}
+          <h3 class="heading" align = "center">Mes Doctorants</h3>
+          {% endif %}
+      </div>
+        <div class="box-body">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      {% if user.individu.my_status == "doctorant" %}
+                        <th>These</th>
+                        <th>Director These</th>
+                        <th>Equipe de Recherche</th>
+
+                      {% elif user.individu.my_status == "professeur"  %}
+                          <th>Doctorant(s)</th>
+                          <th>These</th>
+                      {% endif %}
+                        </tr>
+                      </thead>
+                      <tbody>
+                          {% if user.individu.my_status == "doctorant" %}
+                          <tr>
+                          <td>{{  user.individu.candidat.doctorant.these.titre_these}}</td>
+                          <td>{{ user.individu.candidat.doctorant.these.director_these }}</td>
+                          <td> {{ user.individu.candidat.doctorant.equipe.libelle_equipe }}</td>
+                          </tr>
+
+                          {% elif user.individu.my_status == "professeur"  %}
+                            {% for doctorant in list_doctorants %}
+                            <tr>
+                            <td>{{  doctorant.candidat.individu.nom }} {{  doctorant.candidat.individu.prenoms }} </td>
+                            <td>{{ doctorant.these.titre_these }}</td>
+                            </tr>
+                            {% endfor %}
+                          {% endif %}
+                  </tbody>
+                </table>
+        </div>
+      </div>
+{% endblock%}

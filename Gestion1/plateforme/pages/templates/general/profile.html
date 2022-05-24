@@ -1,0 +1,15 @@
+{% extends "general/layout.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <div class="">
+    <div class="">
+      <img src="{{ user.profile.image.url }}" alt="Photo de profile" width="10px" height="10px">
+      <div class="">
+        <h2>{{ user.username }}</h2>
+        <p>{{ user.email }}</p>
+      </div>
+    </div>
+  </div>
+{% endblock %}

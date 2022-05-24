@@ -1,0 +1,52 @@
+{% extends "pages/base.html" %}
+
+{% block pageTitle %}
+
+{% endblock pageTitle %}
+<div id="logo" class="fl_left">
+  <h1><a href="{% url 'pages:home' %}">Return to home</a></h1>
+</div>
+{% block content %}
+  <form class="" action="" method="post">
+    {% csrf_token %}
+    <div class="box box-warning" >
+      <div class="box-header box-with-boder ">
+
+          <h3 class="heading" align = "center">Editer la mention du doctorant</h3>
+      </div>
+        <div class="box-body">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>CIN</th>
+                      <th>Nom Prénom(s)</th>
+                      <th>These</th>
+                      <th>Equipe de Recherche</th>
+                      <th>Jury</th>
+                      <th>Mention</th>
+                    </tr>
+                  </thead>
+                  {% for doctorant in list_individus %}
+                  <tbody>
+                    <tr>
+                      <td>{{ doctorant.candidat.individu.cin }}</td>
+                      <td>{{ doctorant.candidat.individu.nom }} {{ candidat.individu.prenoms }}</td>
+                      <td> {{doctorant.these.titre_these }} </td>
+                      <td>{{ doctorant.equipe.libelle_equipe }}</td>
+                      <td> {{ doctorant.jury.libelle_jury }} </td>
+                      <td>
+                         <select class="sidebar" name="mention"required="required" >
+                          <option value="">---------------- </option>
+                          <option value="Honorable" {% if  doctorant.mention == "Honorable" %}  selected = "selected" {% endif %}>Honorable</option>
+                          <option value="Très Honorable" {% if  doctorant.mention == "Très Honorable" %}  selected = "selected" {% endif %}>Très Honorable</option>
+                         </select>
+                      </td>
+                    </tr>
+                  </tbody>
+                  {% endfor %}
+                </table>
+                <button type="submit" class="btn btn-primary" >  <span class="fa fa-play"> </span>Valider</button>
+        </div>
+      </div>
+  </form>
+{% endblock %}

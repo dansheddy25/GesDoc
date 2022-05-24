@@ -1,0 +1,21 @@
+{% extends "general/layout.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="wrapper row3">
+  <main class="hoc container clear">
+    <!-- main body -->
+    <!-- ################################################################################################ -->
+    <div class="sectiontitle">
+      <h6 class="heading">Les articles</h6>
+    </div>
+    <div class="group">
+      <div align = "center">
+        <p> {{ articles.auteur.candidat.individu.nom }} {{ articles.auteur.candidat.individu.prenoms }} </p>
+        <p> {{ articles.titre }} </p>
+        <p> {{ articles.date }} </p>
+        <p> {{ articles.body }} </p>
+      </div>
+    </div>
+{% endblock content%}

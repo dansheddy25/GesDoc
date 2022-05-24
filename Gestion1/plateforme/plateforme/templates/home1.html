@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    {% block content1 %}
+    <title>Home</title>
+    {% endblock content1 %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+  </head>
+  <body>
+    <header>
+      <div id="img">
+        <div class="univ">
+
+        </div>
+      </div>
+        {% block content %}
+        <h1 align="center">Bienvenue sur la plateforme de geston de doctorants</h1>
+        {% endblock content %}
+        <nav>
+          <ul id="nav">
+            <li id="nav_home"> <a href="{% url 'pages:index' %}">Home</a> </li>
+            <li id="nav_register"> <a href="{% url 'pages:inscription' %}">s'inscrire</a> </li>
+            <li id="nav_about"> <a href="{% url 'pages:about' %}">About</a> </li>
+            <li id="nav_test"> <a href="{% url 'pages:test' %}">Test</a> </li>
+            <li id="nav_signup"> <a href="{% url 'pages:signup' %}">SignUp</a> </li>
+            <li id="nav_login"> <a href="{% url 'pages:login' %}">Login</a> </li>
+            <li id="nav_logout"> <a href="{% url 'pages:logout' %}">Logout</a> </li>
+          </ul>
+        </nav>
+    </header>
+
+    <section>
+      {% block formulaire %}
+      {% endblock formulaire %}
+
+      {% block validation %}
+      {% endblock validation %}
+
+      {% block login %}
+      {% endblock login %}
+      <nav>
+
+      </nav>
+      {% block diapo %}
+      <!---<article class="">
+        <h4 align = "center">Partie des diaporama</h4>
+      </article> -->
+      {% endblock diapo %}
+
+      {% block requis %}
+      <!--<article class="">
+        <h4 align = "center">Partie des pre_requis</h4>
+      </article> -->
+      {% endblock requis %}
+
+    </section>
+
+    <footer>
+      <h3 align="center">Copyright &copy Dan-Prince 2020 all rights reserved</h3>
+    </footer>
+  </body>
+</html>

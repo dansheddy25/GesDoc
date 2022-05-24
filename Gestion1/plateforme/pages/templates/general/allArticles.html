@@ -1,0 +1,56 @@
+{% extends "general/layout.html" %}
+
+
+
+{% block content %}
+<div class="wrapper row3">
+  <main class="hoc container clear">
+    <!-- main body -->
+    <!-- ################################################################################################ -->
+    <div class="sectiontitle">
+      <h6 class="heading">La liste de tous les articles</h6>
+    </div>
+    <div class="group">
+      <div class="one_half first">
+
+        <table>
+          <thead>
+            <tr>
+              <th colspan="3" align = "center">Liste des articles</th>
+            </tr>
+            <tr>
+              <th>Auteur</th>
+              <th>Titre</th>
+              <th>Date</th>
+
+
+
+            </tr>
+          </thead>
+          {% for article in articles %}
+
+          <tbody>
+            <tr>
+              <td>{{ article.auteur.candidat.individu.nom}} {{article.auteur.candidat.individu.prenoms}}</td>
+              <td>{{ article.titre }}</td>
+              <td>{{article.date }}</td>
+              <td> <a href="{% url 'pages:listArticles' article_id=article.id %}">Lire</a> </td>
+
+
+            </tr>
+          </tbody>
+
+          {% endfor %}
+        </table>
+
+      </div>
+    </div>
+    <!-- ################################################################################################ -->
+
+
+    <!-- / main body -->
+    <div class="clear"></div>
+  </main>
+</div>
+
+{% endblock %}

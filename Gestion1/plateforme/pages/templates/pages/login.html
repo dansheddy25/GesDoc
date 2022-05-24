@@ -1,0 +1,18 @@
+{% extends "home.html" %}
+
+{% block content1 %}
+<title>Login</title>
+{% endblock content1 %}
+
+{% block content %}
+<h1 align = "center"> LOGIN </h1>
+{% endblock content %}
+
+{% block login %}
+<form class="" action="" method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+
+  <input type="submit" name="" value="login">
+</form>
+{% endblock login %}

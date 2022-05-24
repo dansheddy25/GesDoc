@@ -1,0 +1,227 @@
+{%  load static %}
+<!DOCTYPE html>
+
+<html lang="">
+<!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
+<head>
+<title>DanColy</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="{% static 'plateforme/styles/layout.css'%}" rel="stylesheet" type="text/css" media="all">
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.4.0/cjs/popper-base.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"> -->
+
+<!-- </script> -->
+
+
+
+
+
+</head>
+
+
+
+
+
+<style media="screen">
+.total{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+background-size: cover;
+background-image:url('static/pages/img/e3.jpeg');
+animation-name:  dogo;
+animation-duration: 10s;
+animation-delay: 5s;
+animation-iteration-count: 1;
+animation-timing-function: ease-in-out;
+z-index: -1
+
+
+
+}
+
+
+
+@keyframes dogo {
+	0%,60%{
+	background-image:url('static/pages/img/d2.jpeg');
+		}
+
+		60%{
+						background-image:url('static/pages/img/d1.jpeg');
+		}
+
+		80%{
+					background-image:url('static/pages/img/d1.jpeg');
+		}
+
+    95%{
+      background-image: url('static/pages/img/acti.jpeg');
+    }
+
+
+}
+</style>
+
+
+
+
+
+<body id="top">
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- Top Background Image Wrapper -->
+<div class="bgded overlay">
+  <div class="total">
+
+  </div>
+  <!-- ################################################################################################ -->
+  <div class="wrapper row0">
+    <div id="topbar" class="hoc clear">
+      <!-- ################################################################################################ -->
+      <div class="fl_left">
+        <ul class="nospace">
+          <li><a href="{% url 'pages:home' %}"><i class="fa fa-lg fa-home"></i></a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#"><i class="fa fa-envelope-o"></i>est@gmail.com</a></li>
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'pages:logout' %}">Logout</a></li>
+          <li><a href="{% url 'pages:profile' %}">Profile</a></li>
+          <!--<li><a href="{% url 'pages:register' %}">S'inscrire</a></li>-->
+          {% if user.is_superuser %}
+          <li><a href="{% url 'pages:personalPageAdmin' %}"> Administration </a></li>
+          {% endif %}
+          {% else %}
+
+          {% endif %}
+        </ul>
+      </div>
+      <div class="fl_right">
+        <ul class="nospace">
+          <li><i class="fa fa-facebook-square" style="font-size:20px"></i> </li>
+          <li><i class="fa fa-twitter" style="font-size:20px"></i> </li>
+          <li><i class="	fa fa-address-book " style="font-size:20px"></i> </li>
+        </ul>
+      </div
+      <!-- ################################################################################################ -->
+    </div>
+  </div>
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <div class="wrapper row1">
+    <header id="header" class="hoc clear">
+      <!-- ################################################################################################ -->
+      {% block pageTitle %}
+      <div id="logo" class="fl_left">
+        <h1><a href="{% url 'pages:home' %}">DanColy</a></h1>
+      </div>
+      {% endblock pageTitle %}
+      <!-- ################################################################################################ -->
+      <nav id="mainav" class="fl_right">
+        <ul class="clear">
+          <li class="active"><a href="{% url 'pages:home' %}">Home</a></li>
+          <li><a href="{% url 'pages:allArticles' %}">Articles</a></li>
+          <li><a class="drop" href="#">Formations</a>
+            <ul>
+              <li><a href="{% url 'pages:preSelection' %}">Génie Informatique</a></li>
+              <li><a href="{% url 'pages:selection' %}">Génie Electrique</a></li>
+              <li><a href="pages/sidebar-left.html">Génie Mécanique</a></li>
+            </ul>
+          </li>
+          {% if user.is_authenticated %}
+          <li><a class="drop" href="#">S'inscrire</a>
+            <ul>
+              <li><a href="{% url 'pages:registerProf' %}">Professeur</a></li>
+              <li><a href="{% url 'pages:register' %}">Candidat</a></li>
+            <!-- <li><a class="drop" href="#">Level 2 + Drop</a> -->
+              <!--  <ul>
+                  <li><a href="#">Level 3</a></li>
+                  <li><a href="#">Level 3</a></li>
+                  <li><a href="#">Level 3</a></li>
+                </ul>
+              </li> -->
+            <!--  <li><a href="#">Level 2</a></li> -->
+            </ul>
+          </li>
+          {% endif %}
+           <li><a class="drop" href="#">Recherche</a>
+            <ul>
+              <!-- <li><a href="#">Admin</a></li>
+              <li><a class="drop" href="#">Level 2 + Drop</a>
+                <ul>
+                  <li><a href="#">Level 3</a></li>
+                  <li><a href="#">Level 3</a></li>
+                  <li><a href="#">Level 3</a></li>
+                </ul>
+              </li> -->
+           <!-- <li><a class="drop" href="#">Laboratory</a>
+            <ul>
+              <li><a href="#">Add</a></li>
+              <li><a class="drop" href="#">Level 2 + Drop</a>
+                <ul>
+                  <li><a href="#">Level 3</a></li>
+                  <li><a href="#">Level 3</a></li>
+                  <li><a href="#">Level 3</a></li>
+                </ul>
+              </li> -->
+        </ul>
+      </nav>
+      <!-- ################################################################################################ -->
+    </header>
+  </div>
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  {% block content_caroussel %}
+
+  {% endblock content_caroussel %}
+
+  {% block content %}
+
+  {% endblock content %}
+
+  <!-- ################################################################################################ -->
+</div>
+
+{% block articles %}
+
+{% endblock articles %}
+<!-- End Top Background Image Wrapper -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-{{ messages.tags }}">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
+<!-- JAVASCRIPTS -->
+<script src="{% static 'plateforme/scripts/jquery.min.js'%}"></script>
+<script src="{% static 'plateforme/scripts/jquery.backtotop.js'%}"></script>
+<script src="{% static 'plateforme/scripts/jquery.mobilemenu.js'%}"></script>
+</body>
+</html>

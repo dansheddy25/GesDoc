@@ -1,0 +1,238 @@
+{% extends "general/layout.html" %}
+
+{% block content_caroussel %}
+  <!-- zone de la  grande image de bacground    -->
+<div class="wrapper">
+  <div id="pageintro" class="hoc clear">
+    <!-- ################################################################################################ -->
+    <article>
+      <div>
+        <p class="heading">Bienvenue sur notre plateforme</p>
+        <h2 class="heading">Devenez notre candidat aujourd'hui</h2>
+        <p>Il est temps d'envisager d'aller plus loin dans vos études</p>
+      </div>
+      <footer>
+        {% if user.is_authenticated %}
+        <ul class="nospace inline pushright">
+          {% if user.individu.my_status == "candidat"%}
+          <li><a class="btn" href="{% url 'pages:preSelection' %}">La liste des candidats pré_selectionnés</a></li>
+          <li><a class="btn" href="{% url 'pages:selection' %}">La liste des candidats selectionnés</a></li>
+          {% elif user.individu.my_status == "doctorant" or user.individu.my_status == "professeur"%}
+          <li><a class="btn" href="{% url 'pages:selection' %}">La liste des candidats selectionnés</a></li>
+          <li><a class="btn" href="{% url 'pages:personalPage' %}">Espace de travail</a></li>
+          {% endif %}
+        </ul>
+        {% else %}
+        <ul class="nospace inline pushright">
+          <li><a class="btn" href="{% url 'pages:login' %}">Se connecter</a></li>
+          <li><a class="btn" href="{% url 'pages:createAccount' %}">Créer un compte</a></li>
+        </ul>
+        {% endif %}
+      </footer>
+    </article>
+    <!-- ################################################################################################ -->
+  </div>
+</div>
+
+{% endblock %}
+
+
+{% block content %}
+<div class="wrapper row3">
+  <main class="hoc container clear">
+    <!-- main body -->
+    <!-- ################################################################################################ -->
+    <div class="sectiontitle">
+      <h6 class="heading">Projets de Recherche et Développement</h6>
+    </div>
+    <li>Conception et Réalisation d’une plateforme M2M pour la cartographie de la qualité de l’air dans les villes Marocaines  en collaboration avec la région de Casablanca</li> <br>
+  <li>Etude, développement et industrialisation de nouveaux produits à partir de formulations à base de mélange de matière recyclées</li><br>
+  <li>Conception et développement d’une plateforme expérimentale de stations météorologiques pluridisciplinaires en collaboration avec METAGRHYD </li><br>
+  <li>Etude, diagnostic des défauts et supervision des génératriceséquipant les éoliennes – Réalisation d’une plateforme expérimentale en collaboration avec le cluster CE3M et ENSA de Téouan</li><br>
+  <li>MobiCity : Mobilité intelligente : application à la métropole de Casablanca avec la collaboration du Laboratoire Informatique d’Avignon</li><br>
+  <li>Optimisation des performances d’une unité médicale mobile : réalisation d’un prototype En partenariat avec le cluster CE3M, A2S Industries et SI MOUN</li><br>
+  <li>Etude, conception et réalisation de Drones multidisciplinaires avec la collaboration de l’ERN et l’Académie des sciences</li>
+    <!-- ################################################################################################ -->
+    <!-- / main body -->
+    <div class="clear"></div>
+  </main>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row2">
+  <div class="hoc container clear">
+    <div class="sectiontitle">
+      <h6 class="heading">Formations doctorales</h6>
+    </div>
+    <!-- ################################################################################################ -->
+    <ul class="nospace group cta">
+      <li class="one_third first">
+        <article><i class="fa fa-television"></i>
+          <h6 class="heading font-x1"><a href="#">Génie Informatique</a></h6>
+          <p>Vitae lorem id diam aliquet semper a ac leo curabitur dictum orci et libero&hellip;</p>
+        </article>
+      </li>
+      <li class="one_third">
+        <article><i class="fa fa-lightbulb-o"></i>
+          <h6 class="heading font-x1"><a href="#">Génie Electrique</a></h6>
+          <p>Eget commodo justo curabitur dictum vestibulum purus id facilisis fusce&hellip;</p>
+        </article>
+      </li>
+      <li class="one_third">
+        <article><i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+          <h6 class="heading font-x1"><a href="#">Génie Mécanique</a></h6>
+          <p>Nisi molestie vel cras velit metus molestie at vehicula ut auctor at turpis nunc&hellip;</p>
+        </article>
+      </li>
+    </ul>
+    <!-- ################################################################################################ -->
+  </div>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row3">
+  <div class="hoc container clear">
+    <!-- ################################################################################################ -->
+    <div class="sectiontitle">
+      <h6 class="heading">Equipes de recherche</h6>
+    </div>
+    <ul class="nospace group services">
+      <li class="one_third first">
+        <article class="bgded overlay" style="background-image:url('static/pages/img/e4.jpeg');">
+          <h4 class="heading font-x1"><a href="#">Equipe Systèmes Electriques</a></h4>
+
+        </article>
+      </li>
+      <li class="one_third">
+        <article class="bgded overlay" style="background-image:url('static/pages/img/e5.jpeg');">
+          <h4 class="heading font-x1"><a href="#">Equipe Architecture Systèmes</a></h4>
+
+        </article>
+      </li>
+      <li class="one_third btmspace-30">
+        <article class="bgded overlay" style="background-image:url('static/pages/img/e6.jpeg');">
+          <h4 class="heading font-x1"><a href="#">Equipe de Contrôle de Procédés Industriels</a></h4>
+        </article>
+      </li>
+
+
+
+      <li class="one_third first btmspace-30">
+        <article class="bgded overlay" style="background-image:url('static/pages/img/e1.jpeg');">
+          <h4 class="heading font-x1"><a href="#">Equipe Mécanique des structures et des matériaux </a></h4>
+
+        </article>
+      </li>
+      <li class="one_third btmspace-30">
+        <article class="bgded overlay" style="background-image:url('static/pages/img/e2.jpeg');">
+          <h4 class="heading font-x1"><a href="#">Equipe Réseaux Télécommunication et systèmes Embarqués</a></h4>
+
+        </article>
+      </li>
+      <li class="one_third btmspace-30">
+        <article class="bgded overlay" style="background-image:url('static/pages/img/e3.jpeg');">
+          <h4 class="heading font-x1"><a href="#">Equipe de Recherche sur la Formation en Sciences de l’Ingénieur</a></h4>
+
+        </article>
+      </li>
+
+
+    </ul>
+    <!-- ################################################################################################ -->
+  </div>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- <div class="wrapper bgded overlay" style="background-image:url('images/demo/backgrounds/02.jpeg');">
+  <article class="hoc container clear center">
+
+    <div class="sectiontitle" style="margin-bottom:30px;">
+      <h6 class="heading">Lacus purus pulvinar</h6>
+      <p>Vulputate mi ornare et in placerat erat urna id gravida</p>
+    </div>
+    <p><a class="btn medium" href="#">Read More &raquo;</a></p>
+
+  </article>
+</div> -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row3">
+  <div class="wrapper bgded overlay" style="background-image:url('static/pages/img/e9.jpeg');">
+
+
+  <section class="hoc container clear">
+    <!-- ################################################################################################ -->
+    <div class="sectiontitle">
+      <h6 class="heading">Structure de Recherche</h6>
+    </div>
+    <div class="group">
+      <article class="one_third first"><a href="#"><img class="btmspace-30" src="images/demo/320x240.jpeg" alt=""></a>
+        <h3 class="heading">Laboratoire Réseaux, Informatique, Télécommunications et Multimédia.</h3>
+        <p>(RITM)</p>
+        <footer class="nospace"><a href="#">Read More &raquo;</a></footer>
+      </article>
+      <article class="one_third"><a href="#"><img class="btmspace-30" src="images/demo/320x240.jpeg" alt=""></a>
+        <h3 class="heading">Laboratoire Informatique des systèmes et Energies Renouvelables</h3>
+        <p>(LISER)</p>
+        <footer class="nospace"><a href="#">Read More &raquo;</a></footer>
+      </article>
+      <article class="one_third"><a href="#"><img class="btmspace-30" src="images/demo/320x240.jpeg" alt=""></a>
+        <h3 class="heading">Laboratoire Technologies de Constructions et des Systèmes Industriels</h3>
+        <p>(LTCSI)</p>
+        <footer class="nospace"><a href="#">Read More &raquo;</a></footer>
+      </article>
+    </div>
+    <!-- ################################################################################################ -->
+  </section>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row4">
+  <footer id="footer" class="hoc clear">
+    <!-- ################################################################################################ -->
+    <div class="one_half first">
+      <h6 class="heading"></h6>
+      <p class="btmspace-30">Contact ESTC</p>
+      <ul class="nospace linklist contact">
+        <li><i class="fa fa-map-marker"></i>
+          <address>
+            Ecole Supérieure de Technologie , Route d'Eljadida, KM 7, CASABLANCA, Maroc
+          </address>
+        </li>
+        <li><i class="fa fa-phone"></i> +212 522 231 560/565</li>
+        <li><i class="fa fa-envelope-o"></i> estcasa@est-uh2c.ac.ma</li>
+      </ul>
+    </div>
+    <div class="one_quarter">
+      <h6 class="heading"></h6>
+      <ul class="nospace linklist">
+
+      </ul>
+    </div>
+    <div class="one_quarter">
+      <h6 class="heading"></h6>
+      <ul class="nospace linklist">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26603.80074925279!2d-7.674583354794626!3d33.5410305293503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda62cdf71a3ad5f%3A0xae343a1ea1f2b204!2sSuperior%20School%20of%20Technology!5e0!3m2!1sen!2sma!4v1588085856573!5m2!1sen!2sma"
+         width="300" height="200" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+      </ul>
+    </div>
+    <!-- ################################################################################################ -->
+  </footer>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row5">
+  <div id="copyright" class="hoc clear">
+    <!-- ################################################################################################ -->
+    <p class="fl_left">Copyright &copy; 2020 - All Rights Reserved - <a href="#">DANCOLY</a></p>
+    <p class="fl_right">Template by <a target="_blank" href="https://www.os-templates.com/" title="Free Website Templates">DANCOLY PFE</a></p>
+    <!-- ################################################################################################ -->
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "pages/base.html" %}
+
+{% block pageTitle %}
+
+{% endblock pageTitle %}
+<div id="logo" class="fl_left">
+  <h1><a href="{% url 'pages:home' %}">Return to home</a></h1>
+</div>
+{% block content %}
+  <form class="" action="index.html" method="post">
+    {% csrf_token %}
+    <div class="box box-warning" >
+      <div class="box-header box-with-boder ">
+
+          <h4 class="heading"></h4>
+          <p></p>
+      </div>
+        <div class="box-body">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th colspan="4" align = "center">Editer les infos du doctorant</th>
+                    </tr>
+                    <tr>
+                      <th>CIN</th>
+                      <th>Nom</th>
+                      <th>Prénom(s)</th>
+                      <th>Adresse Mail</th>
+                      <th>Equipe</th>
+
+                    </tr>
+                  </thead>
+                  {% for candidat in list_individus %}
+                  <tbody>
+                    <tr>
+                      <td>{{ candidat.individu.cin }}</td>
+                      <td>{{ candidat.individu.nom }}</td>
+                      <td>{{candidat.individu.prenoms }}</td>
+                      <td>{{ candidat.individu.email }}</td>
+                      <td>
+                         <select class="" name="inpt_th_{{candidat.individu.cin}}"required="required" >
+                          <option value="" >--------------------- </option>
+                           {% for these in list_theses %}
+                            <option value="{{these.id}}" {% if  candidat.doctorant.these == these %}  selected = "selected" {% endif %} >{{these.titre_these}} </option>
+                           {% endfor %}
+                         </select>
+                      </td>
+                      <td>
+                         <select class="" name="inpt_eq_{{candidat.individu.cin}}" required="required">
+                          <option value="" >--------------------- </option>
+                           {% for equipe in list_equipes %}
+                            <option value="{{equipe.id}}" {% if  candidat.doctorant.equipe == equipe %}  selected = "selected" {% endif %} >{{equipe.libelle_equipe}} </option>
+                           {% endfor %}
+                         </select>
+                      </td>
+                    </tr>
+                  </tbody>
+                  {% endfor %}
+                </table>
+                <button type="submit" class="btn btn-primary" >  <span class="fa fa-play"> </span>Valider</button>
+        </div>
+      </div>
+  </form>
+{% endblock %}

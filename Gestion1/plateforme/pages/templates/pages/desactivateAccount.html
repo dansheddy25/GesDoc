@@ -1,0 +1,50 @@
+{% extends "pages/base.html" %}
+
+{% block content %}
+<div class="box box-primary">
+<form action="" method="post" role="form">
+  {% csrf_token %}
+  <div class="box box-warning">
+    <div class="box-header box-with-boder" align = "center">
+      <h3 class="heading">Désactivation de Compte</h3>
+    </div>
+    <div class="box-body">
+      <table class = "table table-bordered">
+          <thead>
+              <tr>
+                    <th>CIN</th>
+                    <th>Nom Prénom(s)</th>
+                    <th>Status</th>
+                    <th> Actions </th>
+              </tr>
+
+          </thead>
+          {% for individu  in  list_individu %}
+          <tbody>
+                  <tr>
+                      <td> {{individu.nom}}</td>
+                      <td>{{individu.prenoms}}</td>
+                      <td> {{individu.my_status}}</td>
+                      <td>
+
+                        <input type="radio" name="inpt_{{individu.cin}}"  value="activer"    checked = "checked"/>Activer
+                        <input type="radio" name="inpt_{{individu.cin}}"  value="desactiver" {% if individu.desactiver %}  checked = "checked" {% endif %} /> Désactiver
+
+                      </td>
+                  </tr>
+          </tbody>
+           {% endfor %}
+      </table>
+    </div>
+  </div>
+  <div class="box-footer">
+    <button type="submit" class="btn btn-primary">Valider</button>
+  </div>
+</form>
+</div>
+
+<script type="text/javascript">
+  var nb = 10 ;
+  timer = window.setTimeout(" window.refresh();", 1000*nb, "JavaScript");
+</script>
+{% endblock %}

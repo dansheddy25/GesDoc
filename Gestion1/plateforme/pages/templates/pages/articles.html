@@ -1,0 +1,50 @@
+{% extends "pages/base.html" %}
+
+{% block pageTitle %}
+
+{% endblock pageTitle %}
+<div id="logo" class="fl_left">
+  <h1><a href="{% url 'pages:home' %}">Return to home</a></h1>
+</div>
+{% block content %}
+  <form class="" action="" method="post">
+    {% csrf_token %}
+    <div class="box box-warning" >
+      <div class="box-header box-with-boder ">
+
+          <h3 class="heading" align = "center">Les Articles de mes Doctorants</h3>
+      </div>
+        <div class="box-body">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>CIN</th>
+                      <th>Nom Prénom(s)</th>
+                      <th>Article</th>
+                      <th>Décision</th>
+                    </tr>
+                  </thead>
+                  {% for article in articles %}
+                  <tbody>
+                    <tr>
+                      <td>{{ article.auteur.candidat.individu.cin }}</td>
+                      <td>{{ article.auteur.candidat.individu.nom }}  {{ article.auteur.candidat.individu.prenoms }}</td>
+                      <td>{{ article.titre }}</td>
+                      <td>
+                          {% if article.accept == True %}
+                          Accepté
+                          {% else %}
+                          Refusé
+                          {% endif %}
+                      </td>
+                      <td> <a href="{% url 'pages:readArticle' article_id=article.id %}">Lire</a> </td>
+                      <td> <a href="{% url 'pages:editArticle' article_id=article.id %}">Editer</a> </td>
+                      <td> <a href="{% url 'pages:deleteArticle' article_id=article.id %}">Supprimer</a> </td>
+                    </tr>
+                  </tbody>
+                  {% endfor %}
+                </table>
+        </div>
+      </div>
+  </form>
+{% endblock %}

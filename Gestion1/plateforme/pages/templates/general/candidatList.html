@@ -1,0 +1,53 @@
+{% extends "general/layout.html" %}
+
+{% block pageTitle %}
+
+{% endblock pageTitle %}
+<div id="logo" class="fl_left">
+  <h1><a href="{% url 'pages:home' %}">Pre-Selection</a></h1>
+</div>
+{% block content %}
+<div class="wrapper row3">
+  <main class="hoc container clear">
+    <!-- main body -->
+    <!-- ################################################################################################ -->
+    <div class="sectiontitle">
+      <h6 class="heading">Décision finale</h6>
+    </div>
+    <div class="group">
+      <div class="one_half first">
+          <div class="" align = "center">
+            <table>
+              <thead>
+                <tr>
+                  <th colspan="5" align = "center"> Liste définitive </th>
+                </tr>
+                <tr>
+                  <th>CIN</th>
+                  <th>Nom</th>
+                  <th>Prénom(s)</th>
+                  <th>Adresse Mail</th>
+                </tr>
+              </thead>
+              {% for candidat in individus %}
+              <tbody>
+                <tr>
+                  <td>{{ candidat.individu.cin }}</td>
+                  <td>{{ candidat.individu.nom }}</td>
+                  <td>{{ candidat.individu.prenoms }}</td>
+                  <td>{{ candidat.individu.user.email }}</td>
+                </tr>
+              </tbody>
+              {% endfor %}
+            </table>
+          </div>
+      </div>
+    </div>
+    <!-- ################################################################################################ -->
+
+    <!-- / main body -->
+    <div class="clear"></div>
+  </main>
+</div>
+
+{% endblock %}

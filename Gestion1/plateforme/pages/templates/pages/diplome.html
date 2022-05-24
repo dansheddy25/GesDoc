@@ -1,0 +1,18 @@
+{% extends "home.html" %}
+
+{% block content1 %}
+<title>Diplome</title>
+{% endblock content1 %}
+
+{% block content %}
+<h1 align = "center"> Complete your registration </h1>
+{% endblock content %}
+
+{% block formulaire %}
+<form align = "center" class=""  method="POST" action="">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" name="button">save</button>
+  <input type="reset" name="" value="Effacer">
+</form>
+{% endblock formulaire %}

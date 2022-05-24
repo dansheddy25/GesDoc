@@ -1,0 +1,33 @@
+{% extends "general/layout.html" %}
+
+
+
+{% block content %}
+<div class="wrapper row3">
+  <main class="hoc container clear">
+    <!-- main body -->
+    <!-- ################################################################################################ -->
+    <div class="sectiontitle">
+      <h6 class="heading">Login</h6>
+      <p>Fill information</p>
+    </div>
+    <div class="group">
+      <div class="one_half first">
+        <form class="" action="" method="POST">
+          {% csrf_token %}
+
+          {{ form.as_p }}
+          <button type="submit" name="button">Input</button>
+          <!--<input type="reset" name="input" value="Reset">-->
+          </form>
+      </div>
+    </div>
+    <!-- ################################################################################################ -->
+
+
+    <!-- / main body -->
+    <div class="clear"></div>
+  </main>
+</div>
+
+{% endblock %}

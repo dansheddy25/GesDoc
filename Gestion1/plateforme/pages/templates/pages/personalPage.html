@@ -1,0 +1,16 @@
+{% extends "pages/base.html" %}
+
+{% block welcome %}
+<h1 align = "center">
+  {% if user.individu.my_status == 'professeur' %}
+  Bienvenue à vous Professeur {{ user.individu.nom }}
+  {% else %}
+  Bienvenue à vous {{ user.individu.nom }}
+  {% endif %}
+  <!--  <small>Control panel</small> -->
+</h1>
+{% endblock welcome %}
+
+{% block content %}
+
+{% endblock %}

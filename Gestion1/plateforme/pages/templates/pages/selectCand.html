@@ -1,0 +1,58 @@
+{% extends "pages/base.html" %}
+
+{% block pageTitle %}
+
+{% endblock pageTitle %}
+<div id="logo" class="fl_left">
+  <h1><a href="{% url 'pages:home' %}">Return to home</a></h1>
+</div>
+{% block content %}
+  <form class="" action="" method="post">
+    {% csrf_token %}
+    <div class="box box-warning" >
+      <div class="box-header box-with-boder ">
+
+          <h3 class="heading" align = "center">Édition de la décision de pré-selection</h3>
+      </div>
+        <div class="box-body">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <!--<th colspan="5" align = "center">Liste des candidats admis pour l'entretien</th>-->
+                    </tr>
+                    <tr>
+                      <th>CIN</th>
+                      <th>Nom</th>
+                      <th>Prénom(s)</th>
+                      <th>Adresse Mail</th>
+                      <th>Accepted</th>
+                    </tr>
+                  </thead>
+                  {% for candidat in list_individus %}
+                  <tbody>
+                    <tr>
+                      <td>{{ candidat.individu.cin }}</td>
+                      <td>{{ candidat.individu.nom }}</td>
+                      <td>{{candidat.individu.prenoms }}</td>
+                      <td>{{ candidat.individu.email }}</td>
+                      <td>
+                      <div class="form-group">
+                        <label>
+                          <input type="radio" class="flat-red" name="inpt_{{candidat.individu.cin}}"  value="accepted"    {% if candidat.preselection == True %}  checked = "checked" {% endif %}  />
+                           Accepted
+                        </label>
+                        <label>
+                          <input type="radio" class="flat-red" name="inpt_{{candidat.individu.cin}}"  value="rejecter"  {% if candidat.preselection == False %}  checked = "checked" {% endif %}/>
+                              rejecter
+                        </label>
+                      </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                  {% endfor %}
+                </table>
+                <button type="submit" class="btn btn-primary" >  <span class="fa fa-play"> </span>  Submit</button>
+        </div>
+      </div>
+  </form>
+{% endblock %}
